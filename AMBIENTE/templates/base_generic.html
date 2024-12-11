@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    {% load static %}
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}Banco Luck{% endblock %}</title>
+
+    <!-- Favicon de Trevo -->
+    <link rel="icon" href="{% static 'images/trevo.ico' %}" type="image/x-icon">
+
+    <!-- Estilo CSS para centralizar títulos e dar uma aparência mais moderna -->
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #eaf5e1;
+            /* Verde claro */
+            color: #333;
+            margin: 0;
+            padding: 0;
+        }
+
+        h1,
+        h2,
+        h3,
+        h4,
+        h5,
+        h6 {
+            text-align: center;
+            margin: 20px 0;
+            color: #4CAF50;
+            /* Verde escuro para o título */
+        }
+
+        /* Estilo para o menu fixo no cabeçalho */
+        nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            background-color: #4CAF50;
+            /* Verde escuro */
+            padding: 10px 0;
+            z-index: 1000;
+        }
+
+        nav ul {
+            display: flex;
+            justify-content: center;
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        nav ul li {
+            margin: 0 20px;
+        }
+
+        nav ul li a {
+            text-decoration: none;
+            color: white;
+            font-weight: bold;
+            font-size: 18px;
+            padding: 10px 20px;
+            border-radius: 5px;
+            transition: background-color 0.3s;
+        }
+
+        nav ul li a:hover {
+            background-color: #45a049;
+            /* Efeito hover */
+        }
+
+        /* Estilo da área de conteúdo */
+        .content {
+            padding-top: 80px;
+            /* Para dar espaço ao menu fixo */
+            padding: 20px;
+        }
+
+        .messages {
+            background-color: #f8d7da;
+            color: #721c24;
+            padding: 10px;
+            border-radius: 5px;
+            margin: 20px auto;
+            text-align: center;
+            width: 80%;
+        }
+
+        .message {
+            padding: 5px;
+            margin-bottom: 10px;
+            border-radius: 3px;
+        }
+
+        /* Formulário e inputs */
+        form {
+            max-width: 500px;
+            margin: 0 auto;
+            background-color: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        form input,
+        form button {
+            width: 100%;
+            padding: 10px;
+            margin: 10px 0;
+            font-size: 16px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+        }
+
+        form button {
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            cursor: pointer;
+            font-weight: bold;
+        }
+
+        form button:hover {
+            background-color: #45a049;
+        }
+
+        section {
+            margin: 20px 0;
+        }
+    </style>
+
+    <!-- Link para o arquivo CSS adicional -->
+    <link rel="stylesheet" href="{% static 'css/styles.css' %}">
+</head>
+
+<body>
+    <!-- Exibir mensagens de sucesso ou erro -->
+    {% if messages %}
+    <div class="messages">
+        {% for message in messages %}
+        <div class="message {{ message.tags }}">
+            {{ message }}
+        </div>
+        {% endfor %}
+    </div>
+    {% endif %}
+
+    <!-- Menu de navegação fixo no cabeçalho -->
+    <nav>
+        <ul>
+            <li><a href="{% url 'create_account' %}">Criar Conta</a></li>
+            <li><a href="{% url 'deposit' %}">Depositar</a></li>
+            <li><a href="{% url 'withdraw' %}">Sacar</a></li>
+            <li><a href="{% url 'check_balance' %}">Consultar Saldo</a></li>
+            <li><a href="{% url 'close_account' %}">Encerrar Conta</a></li>
+            <li><a href="{% url 'transaction_history' %}">Histórico de Transações</a></li>
+        </ul>
+    </nav>
+
+    <!-- Conteúdo principal -->
+    <div class="content">
+        {% block content %}
+        {% endblock %}
+    </div>
+
+</body>
+
+</html>

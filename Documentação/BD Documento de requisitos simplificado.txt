@@ -1,0 +1,127 @@
+Documento de Requisitos Simplificado do Sistema Bancário Luck Bank
+Versão 2.0
+Desenvolvido por: Lucas Barbosa Lins
+
+Obs: Versão 2.0 que junta o trabalho de POO com o de BD, futuramente pode vir a ser melhorado
+----------------------------------------------------------------------------------
+Objetivo:
+Desenvolver um sistema bancário simples, intuitivo e seguro, permitindo ao usuário realizar operações bancárias como criação de conta, 
+depósitos, saques, consultas de saldo e histórico de transações. O sistema utilizará senhas de 4 dígitos para garantir a segurança das transações, 
+além de funcionalidades básicas de gestão de contas.
+
+1. Requisitos Funcionais (RF)
+1.1 Cadastro de Conta
+O sistema deve permitir ao usuário criar uma conta fornecendo:
+
+Nome completo do titular
+Uma senha numérica de 4 dígitos
+O número da conta será gerado automaticamente pelo sistema. (UPDATE FUTURO)
+Critérios de criação:
+
+O primeiro depósito deve ser de no mínimo R$ 10,00 para ativar a conta.
+
+1.2 Operações Bancárias
+O sistema deve permitir as seguintes operações, sempre com solicitação de senha para confirmar as transações:
+
+Saque: O usuário pode retirar um valor da conta, desde que tenha saldo suficiente.
+Depósito: O usuário pode depositar um valor na conta.
+Consulta de Saldo: O usuário pode consultar o saldo disponível da conta.
+Histórico de Transações: O sistema exibirá um histórico das últimas transações realizadas.
+Encerramento de Conta: O usuário pode solicitar o encerramento da conta, com verificação de senha.
+
+1.3 Verificação de Senha
+O sistema deve solicitar uma senha de 4 dígitos para realizar qualquer transação.
+
+O sistema permitirá até 3 tentativas de senha incorretas.
+Após 3 tentativas erradas, a conta será bloqueada, e o atendimento será encerrado, com a instrução para o usuário se dirigir à agência para desbloqueio.
+
+1.4 Mensagens de Confirmação
+Para cada operação realizada, o sistema deve exibir mensagens de confirmação, como:
+
+"Saque realizado com sucesso"
+"Depósito realizado com sucesso"
+"Consulta de saldo realizada com sucesso"
+"Histórico de transações exibido com sucesso"
+"Conta encerrada com sucesso"
+1.5 Bloqueio de Conta
+Após 3 tentativas incorretas de senha, a conta será bloqueada automaticamente.
+
+O usuário será informado que deve se dirigir à agência para desbloqueio.
+
+1.6 Encerramento do Atendimento
+O sistema deve permitir que o usuário encerre o atendimento a qualquer momento, através de uma opção disponível no menu de navegação.
+
+-------------------------------------------------------------------------------------------------------------------
+2. Requisitos Não Funcionais (RNF)
+
+2.1 Segurança
+A senha do usuário deve ser criptografada e tratada de maneira segura.
+O sistema deve garantir que as transações financeiras, como saques e depósitos, sejam realizadas apenas após a autenticação com a senha de 4 dígitos.
+
+2.2 Usabilidade
+O sistema deve ser simples e intuitivo, com menus claros e opções fáceis de entender.
+As mensagens de erro e sucesso devem ser visíveis e explicativas, permitindo que o usuário compreenda claramente o estado de sua solicitação.
+
+2.3 Desempenho
+O sistema deve ser responsivo, com baixa latência na execução das operações (saque, depósito, consulta de saldo, etc.).
+O tempo de resposta para realizar as transações não deve exceder 3 segundos.
+
+3. Requisitos de Interface
+3.1 Menu Principal
+O sistema deve exibir um menu de navegação com as seguintes opções:
+
+Criar Conta
+Depositar
+Sacar
+Consultar Saldo
+Histórico de Transações
+Encerrar Conta
+
+3.2 Exibição de Erros
+O sistema deve exibir mensagens de erro claras em casos como:
+
+Senha incorreta
+Saldo insuficiente para a transação
+Dados inválidos (número da conta ou valor)
+---------------------------------------------------------------------------------------
+4. Requisitos Técnicos
+
+4.1 Tecnologias Utilizadas
+Linguagem de Programação: Python
+Framework: Django (para desenvolvimento web)
+
+4.2 Armazenamento
+O sistema inicialmente não utilizará um banco de dados persistente. Todos os dados serão armazenados em variáveis de memória durante a execução do sistema. 
+O projeto será expandido com a integração de um banco de dados relacional em uma futura etapa.
+---------------------------------------------------------------------------------------
+
+5. Fluxo de Operações
+Cadastro de Conta:
+O usuário informa o nome completo e cria uma senha de 4 dígitos.
+O sistema gera automaticamente o número da conta.
+O primeiro depósito (mínimo de R$ 10,00) é realizado para a ativação da conta.
+O sistema confirma o cadastro com uma mensagem.
+Menu de Operações:
+O sistema exibe um menu com as opções de operações bancárias.
+O usuário escolhe a operação desejada e fornece a senha para autenticação.
+Caso a senha seja válida, a operação é realizada e uma mensagem de confirmação é exibida.
+Histórico de Transações:
+O sistema exibe um histórico com as últimas transações realizadas, permitindo ao usuário visualizar o extrato completo da conta.
+Bloqueio de Conta:
+Após 3 tentativas de senha incorretas, o sistema bloqueia a conta e informa que o usuário precisa ir à agência para desbloqueio.
+
+-----------------------------------------------------------------------------------------
+6. Conclusão
+O sistema bancário Luck Bank foi projetado para ser simples, seguro e eficiente, com foco em fornecer uma interface amigável e funcionalidades básicas de 
+banco, como criação de conta, saque, depósito, consulta de saldo e histórico de transações. Futuramente, o sistema será expandido com a integração de um banco de 
+dados e melhorias nas funcionalidades, como a implementação de uma autenticação mais robusta e o gerenciamento de múltiplas contas simultâneas.
+
+------------------------------------------------------------------------------------------
+
+
+Espaço para Anotações de Implementações Futuras e Ideias de Melhorias:
+- Implementar a funcionalidade de "alteração de senha" para os usuários.
+- Adicionar validações mais rigorosas no formato dos dados (por exemplo, validação de CPF ou email, caso o sistema cresça).
+- Melhorar o controle de erros, exibindo mensagens detalhadas ao usuário para diferentes tipos de falhas.
+- Adicionar autenticação por autenticação multifatorial para maior segurança.
+- Integrar completamente os trabalhos de POO e BD. 

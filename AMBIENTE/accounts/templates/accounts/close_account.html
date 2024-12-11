@@ -1,0 +1,11 @@
+{% extends 'base_generic.html' %}
+
+{% block content %}
+<h2>Encerrar Conta</h2>
+<form method="post">
+    {% csrf_token %}
+    <label for="account_number">Número da conta:</label>
+    <input type="text" name="account_number" required>
+    <button type="submit">Encerrar Conta</button>
+</form>
+{% endblock %}

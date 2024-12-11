@@ -1,0 +1,5 @@
+Dados utilizados para o superusuário
+
+username: lucas
+Email address: lucasbd@uninassau.com
+password: 87654321
